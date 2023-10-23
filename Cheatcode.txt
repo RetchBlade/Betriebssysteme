@@ -1,0 +1,57 @@
+loadkeys de-latin1
+setfont ter-132b
+ping archlinux.org (STRG + C wenns nicht aufhört)
+gdisk /dev/sda --> ? --> n
+
+Partition Nr. 2, last sector --> +1G, dann partition nr 3. +20G.. type auf linux home
+
+Swap, neue partition, 127, +100M last sector, type auf Linux Swap (8200)
+
+neue partition, 128, +5M last sector, typ bios boot partition (ef02)
+
+neue partition, 1, alles enter
+
+w(write), y(weiter), 
+
+für sda1,2,3 mkfs.ext4
+
+mkswap /dev/sda127
+
+mount /dev/sda1 /mnt
+
+sda2 /boot
+sda3 /home
+
+swapon /dev/sda127
+
+pacstrap -K /mnt base linux linux-firmware nano
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
+nano /etc/fstab
+hwclock 
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+nano /etc/locale.gen
+DE_DE utf8, raute löschen, verlassen speichern
+nano /etc/locale.conf -> LANG=de_DE.UTF-8
+
+nano /etc/vconsole.conf -> KEYMAP=de-latin1 verlassen speichern
+nano /etc/hostname
+passwd -> invi password setzen
+
+pacman -Syu
+pacman -S dhcpcd
+systemctl enable dhcpcd
+ping archlinux.org
+pacman -S grub
+grub-install --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+exit eingeben
+reboot eingeben
+
+pacman -S gnome enter enter enter enter bis zum download
+
+systemctl enable gdm.service
+
+systemctl start gdm.service
