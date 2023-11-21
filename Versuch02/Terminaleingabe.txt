@@ -1,0 +1,22 @@
+1. Datei speichern und im Terminal mit "chmod+x backup.sh" einmal ausfuehren.
+-> Sorgt dafür, dass der geschriebene Skript ausfuehrbar ist.
+
+2. "sudo mkdir /backup"
+-> Um einen Verzeichnis zum verschieben zu haben
+
+3. Servie und Timer aktivieren und starten
+"sudo cp backup.sh /usr/local/bin/backup.sh"
+"sudo cp backup.service /etc/systemd/system/"
+"sudo cp backup.timer /etc/systemd/system/"
+
+-> Wir kopieren die Dateien in das System
+
+"sudo systemctl enable backup.timer"
+"sudo systemctl start backup.timer"
+
+-> Starten lol
+
+letzter Schritt.
+"sudo journalctl -u backup.service
+-> Sobald Dateien da sind, einfach mal nachschauen, ob das Debbuging klappt
+-> Nicht verwirren lassen, alles was man macht, steht da drinne.

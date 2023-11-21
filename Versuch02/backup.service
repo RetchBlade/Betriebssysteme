@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup Service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/backup.sh
+
+[Install]
+WantedBy=default.target
