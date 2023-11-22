@@ -1,0 +1,4 @@
+s/daß/dass/g
+s/muß/muss/g
+s/paßt/passt/g
+s/läßt/laesst/g

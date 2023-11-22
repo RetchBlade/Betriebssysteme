@@ -1,0 +1,6 @@
+1. mkdir Arbeitsverzeichnis und dann cd /Arbeitsverzeichnis
+2. sedfile erstellen
+3. Vorlagen von *.tex erstellen oder nutzen also text.tex und lol.tex
+4. Bash skript erstellen, erlaerung steht in suer.sh drinne.
+5. chmod +x suer.sh
+6. ./suer.sh *.tex
